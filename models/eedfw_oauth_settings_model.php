@@ -28,7 +28,7 @@ class Eedfw_oauth_settings_model extends Eedfw_oauth_model
 			'default' => '0'
 			),									
 	);
-	protected $primary_key = "";
+	protected $primary_keys = array();
 	protected $table_keys = array();
 
 	private $settings = array();

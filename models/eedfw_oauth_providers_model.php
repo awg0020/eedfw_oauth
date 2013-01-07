@@ -77,7 +77,7 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 			'default'		=> ''
 			),
 	);
-	protected $primary_key = 'provider_id';
+	protected $primary_keys = array('provider_id');
 	protected $table_keys = array();
 	
 	public $data = array(
@@ -119,7 +119,6 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 	}
 	
 
-	
 	/**
 	 * Returns the redirect uri
 	 *

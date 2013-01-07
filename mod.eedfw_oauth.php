@@ -1,7 +1,6 @@
 <?php
 class Eedfw_oauth
 {
-	private $settings;
 	
 	public function __construct() 
 	{
@@ -86,19 +85,7 @@ class Eedfw_oauth
 
 	public function get_api_meetup_value() 
 	{
-		echo $this->access_token();
-		$data = array(
-			"fields" => "email",
-			"member_id" => "self",
-			"access_token" => $this->access_token(),
-		);
-		
-		$url = "https://api.meetup.com/2/members?" . http_build_query($data);
-		
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$response = json_decode(curl_exec($ch));
-		print_r($response);		
+		$this->EE->Eedfw_oauth_providers_model->save();	
 	}
 	
 	public function get_facebook_api_value()
@@ -106,7 +93,7 @@ class Eedfw_oauth
 		$data = array(
 			"access_token" => $this->access_token(),
 		);
-		
+
 		$url = "https://graph.facebook.com/me?" . http_build_query($data);
 		
 		$ch = curl_init($url);

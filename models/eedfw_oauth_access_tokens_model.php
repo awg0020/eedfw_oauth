@@ -41,7 +41,7 @@ class Eedfw_oauth_access_tokens_model extends Eedfw_oauth_model {
 			'default'				=> 'Bearer',
 			),
 		);
-	protected $primary_key = array('provider_id', 'member_id');
+	protected $primary_keys = array('provider_id', 'member_id');
 	protected $table_keys = array();
 	
 	public function __construct() {
