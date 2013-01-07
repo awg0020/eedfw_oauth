@@ -28,7 +28,7 @@ class Eedfw_oauth_model extends CI_Model {
 		$query = $this->db->from('exp_actions')->where('class', 'Eedfw_oauth')->where('method', $method);
 		$data['ACT'] = $query->get()->row()->action_id;
 		
-		return $this->functions->create_url('?' . http_build_query(array_reverse($data)));
+		return $this->config->item('site_url') . '?' . http_build_query(array_reverse($data));
 	}
 
 	public function save($keys = array()) 
