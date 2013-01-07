@@ -60,6 +60,7 @@ class Eedfw_oauth
 				'grant_type'		=> 'authorization_code',
 				'redirect_uri'		=> $provider['redirect_uri'],
 				'code'				=> $this->EE->input->get('code'),
+				'format'			=> 'json',
 			);
 			
 			$query_string = http_build_query($data);
@@ -68,6 +69,7 @@ class Eedfw_oauth
 			curl_setopt($ch, CURLOPT_POST, TRUE);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $query_string);
 			$response = curl_exec($ch);
+			error_log($response);
 
 			$parsed_response = json_decode($response, TRUE);
 			if (empty($parsed_response['access_token'])) parse_str($response, $parsed_response);
