@@ -9,7 +9,7 @@ class Eedfw_oauth_upd {
 
 	var $settings       = array();
 
-	private $mod_actions = array('oauth_callback');
+	private $mod_actions = array('auth_callback', 'deauth_callback');
 
 	public function __construct() {
 		$this->EE =& get_instance();
@@ -47,7 +47,7 @@ class Eedfw_oauth_upd {
 		
 		// install providers
 		$this->EE->Eedfw_oauth_providers_model->create_table();
-		$this->EE->Eedfw_oauth_providers_model->load_sample_data();
+		$this->EE->Eedfw_oauth_providers_model->save();
 		
 		// install providers
 		$this->EE->Eedfw_oauth_access_tokens_model->create_table();

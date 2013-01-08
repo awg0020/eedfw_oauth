@@ -8,8 +8,6 @@ class Eedfw_oauth_mcp {
 		
 		$this->EE->load->model('Eedfw_oauth_settings_model');
 		$this->EE->load->model('Eedfw_oauth_providers_model');
-		
-		$this->settings = $this->EE->Eedfw_oauth_settings_model->get();
 
 	}
 	public function index() {
@@ -26,12 +24,12 @@ class Eedfw_oauth_mcp {
 			}
 			foreach ($_POST['providers'] as $value) {
 				$this->EE->Eedfw_oauth_providers_model->data = $value;
-				$this->EE->Eedfw_oauth_providers_model->save($value['provider_id']);
+				$this->EE->Eedfw_oauth_providers_model->save(array('provider_id' => $value['provider_id']));
 			}
 			$this->EE->functions->redirect(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=eedfw_oauth'.AMP.'method=settings');
 		}
 
-		return $this->EE->load->view(__FUNCTION__, array('settings' => $this->settings, 'providers' => $this->EE->Eedfw_oauth_providers_model), TRUE);
+		return $this->EE->load->view(__FUNCTION__, array('settings' => $this->EE->Eedfw_oauth_settings_model, 'providers' => $this->EE->Eedfw_oauth_providers_model), TRUE);
 	}
 
 }

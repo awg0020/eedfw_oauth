@@ -76,12 +76,18 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 			'null'			=> FALSE,
 			'default'		=> ''
 			),
+		'response_type'	=> array(
+			'type' 			=> 'varchar',
+			'constraint'	=> '30',
+			'null'			=> FALSE,
+			'default'		=> ''
+			),
 	);
-	protected $primary_key = 'provider_id';
+	protected $primary_keys = array('provider_id');
 	protected $table_keys = array();
 	
 	public $data = array(
-		'short_name' => 'sample_provider',
+		'short_name' => 'meetup',
 		'client_id' => 'kg2tbegtc60ubvgbfsv79e7ksf',
 		'client_secret' => '924fi8994e8ilnog7akcj6nj8i',
 		'authorization_url' => 'https://secure.meetup.com/oauth2/authorize',
@@ -89,7 +95,8 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 		'refresh_access_token_url' => 'https://secure.meetup.com/oauth2/access',
 		'scope' => 'email',
 		'response_variable_name_access_token' => 'access_token',
-		'response_variable_name_expires' => 'expires',
+		'response_variable_name_expires' => 'expires_in',
+		'response_type' => 'json'
 	);
 	
 	protected $query;
@@ -117,9 +124,7 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 
 		return (!empty($data)) ? $data : FALSE;
 	}
-	
 
-	
 	/**
 	 * Returns the redirect uri
 	 *
@@ -128,7 +133,7 @@ class Eedfw_oauth_providers_model extends Eedfw_oauth_model
 	 */
 	public function get_redirect_uri($short_name) 
 	{
-		return $this->get_act_url('oauth_callback', array('provider' => $this->data['short_name']));
+		return $this->get_act_url('auth_callback', array('provider' => $this->data['short_name']));
 	}
 	
 	/**
