@@ -9,7 +9,7 @@ class Eedfw_oauth_upd {
 
 	var $settings       = array();
 
-	private $mod_actions = array('oauth_callback');
+	private $mod_actions = array('auth_callback', 'deauth_callback');
 
 	public function __construct() {
 		$this->EE =& get_instance();

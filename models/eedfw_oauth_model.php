@@ -38,7 +38,7 @@ class Eedfw_oauth_model extends CI_Model {
 		if ($this->db->from($this->table)->where($keys)->count_all_results() > 0) {
 			return $this->db->where($keys)->update($this->table, $this->data);
 		} else {
-			return $this->db->insert($this->table, $this->data); 
+			return $this->db->insert($this->table, $this->data);
 		}
 	}
 	

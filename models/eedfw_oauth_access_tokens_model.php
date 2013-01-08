@@ -56,7 +56,6 @@ class Eedfw_oauth_access_tokens_model extends Eedfw_oauth_model {
 		if ($this->db->from($this->table)->where('member_id', $data['member_id'])->where('provider_id', $data['provider_id'])->count_all_results() > 0) {
 			return $this->db->where('member_id', $data['member_id'])->where('provider_id', $data['provider_id'])->update($this->table, $data);
 		} else {
-			error_log(print_r($data, true));
 			return $this->db->insert($this->table, $data); 
 		}
 	}
